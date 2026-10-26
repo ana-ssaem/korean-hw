@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>패션 · Домашнее задание</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6c2;--pat:rgba(255,196,60,.38);--card:#fff;--ink:#1b2a7a;--mut:#5b66a8;--sh:#ff5a78;--c0:#ffb8c8;--c1:#bdf29c;--c2:#ffd75e;--c3:#a6d6ff;--okbg:#bdf29c;--nobg:#ffb3bf;--sec:var(--c0);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171a3d;--pat:rgba(120,140,255,.16);--card:#242a5c;--ink:#f4f6ff;--mut:#aeb7ee;--sh:#ff6f8a;--c0:#8f2f55;--c1:#2c6b3a;--c2:#7a6218;--c3:#2a5c94;--okbg:#2c7a45;--nobg:#8f3048;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171a3d;--pat:rgba(120,140,255,.16);--card:#242a5c;--ink:#f4f6ff;--mut:#aeb7ee;--sh:#ff6f8a;--c0:#8f2f55;--c1:#2c6b3a;--c2:#7a6218;--c3:#2a5c94;--okbg:#2c7a45;--nobg:#8f3048;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background-color:var(--bg);background-image:linear-gradient(90deg,var(--pat) 50%,transparent 50%),linear-gradient(var(--pat) 50%,transparent 50%);background-size:44px 44px;background-attachment:fixed;color:var(--ink);font-family:"Do Hyeon","Noto Sans KR",system-ui,sans-serif;font-size:20px;line-height:1.45;min-height:100vh}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 48px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.logo{background:var(--sh);color:#fff;border:4px solid var(--ink);border-radius:999px;box-shadow:0 5px 0 var(--ink);padding:2px 22px;font:400 32px "Black Han Sans","Do Hyeon",sans-serif;transform:rotate(-4deg);flex:none}
+.top small{display:block;color:var(--mut);font-size:16px}
+.top .st{font-size:26px;letter-spacing:4px}
+.track{position:relative;height:18px;background:var(--card);border:4px solid var(--ink);border-radius:999px;margin:28px 4px 22px}
+.track i{display:block;height:100%;width:0;background:var(--sh);border-radius:999px;transition:width .6s cubic-bezier(.3,1.4,.5,1)}
+.track b{position:absolute;top:-28px;left:0;font-size:28px;transition:left .6s cubic-bezier(.3,1.4,.5,1);transform:translateX(-50%)}
+.card{position:relative;background:var(--card);border:4px solid var(--ink);border-radius:30px;box-shadow:0 9px 0 var(--sh);padding:28px 18px 22px}
+.tag{display:inline-block;background:var(--sec);color:var(--ink);border:4px solid var(--ink);border-radius:999px;padding:2px 16px;font-size:17px;margin:-46px 0 14px;transform:rotate(-2deg)}
+.cnt{position:absolute;right:14px;top:-18px;background:var(--c2);color:var(--ink);border:4px solid var(--ink);border-radius:999px;padding:0 12px;font-size:16px}
+.ru{color:var(--mut);font-size:17px;margin:0 0 6px}
+.sent{font-size:30px;line-height:1.5;margin:0 0 20px;word-break:keep-all}
+.blank{display:inline-block;min-width:56px;border-bottom:5px dotted var(--sh);text-align:center;margin:0 2px;color:var(--sh)}
+.opts{display:grid;gap:12px}
+.btn{font:inherit;font-size:24px;min-height:62px;width:100%;padding:10px 18px;border-radius:999px;border:4px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 6px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
+.btn:focus-visible,.inp:focus-visible,.chip:focus-visible{outline:4px solid var(--sh);outline-offset:3px}
+.btn.main{background:var(--sec);margin-top:18px}
+.btn.ghost{background:var(--c3);margin-top:14px;font-size:20px;min-height:56px}
+.btn.ok,.chip.ok,.inp.ok{background:var(--okbg)}
+.btn.no,.chip.no,.inp.no{background:var(--nobg)}
+.btn:disabled,.chip:disabled{cursor:default;transform:none}
+.inp{width:100%;min-height:62px;font:inherit;font-size:26px;padding:8px 20px;border-radius:999px;border:4px solid var(--ink);background:var(--card);color:var(--ink)}
+.hint{display:inline-block;font-size:16px;background:var(--c2);border:3px solid var(--ink);border-radius:999px;padding:1px 14px;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{font:inherit;font-size:26px;min-height:60px;padding:6px 20px;border-radius:999px;border:4px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 6px 0 var(--ink)}
+.fb{margin-top:20px;padding:14px 18px;border-radius:22px;border:4px dotted var(--ink);animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+.fb.ok{background:var(--okbg)}.fb.no{background:var(--nobg)}
+.fb b{font-size:23px;font-weight:400}
+.fb p{margin:6px 0 0;font-size:17px}
+.stamp{position:absolute;right:12px;top:-30px;font-size:48px;animation:stamp .7s cubic-bezier(.3,1.8,.5,1) forwards;pointer-events:none}
+.sticker{position:absolute;font-size:38px;pointer-events:none}
+.shake{animation:shake .4s}
+.bounce{animation:bounce .6s}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+@keyframes bounce{30%{transform:scale(1.03) rotate(-1deg)}60%{transform:scale(.99) rotate(1deg)}}
+@keyframes stamp{0%{transform:scale(3) rotate(-30deg);opacity:0}100%{transform:scale(1) rotate(-12deg);opacity:1}}
+.petal{position:fixed;top:-40px;font-size:30px;pointer-events:none;z-index:9;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translate(var(--dx),108vh) rotate(var(--r));opacity:.3}}
+.big{font:400 90px/1 "Black Han Sans","Do Hyeon",sans-serif;color:var(--sh);text-align:center;margin:8px 0}
+.center{text-align:center}
+.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:3px dotted var(--ink);font-size:19px}
+textarea{width:100%;height:120px;margin-top:12px;border:4px solid var(--ink);border-radius:18px;background:var(--card);color:var(--ink);font:13px/1.4 ui-monospace,monospace;padding:10px}
+a.btn{display:block;text-align:center;text-decoration:none;line-height:38px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="logo">패션</div><div><span class="st">🍓🧸🎀</span><small>Одежда и мода · Домашнее задание</small></div></div>
+  <div id="app"></div>
+</div>
+<script>
+const TO="akosenko62@gmail.com";
+/* c: [верный, предложение, неверные[], пояснение]; t: [до, после, перевод, подсказка, ответы[], пояснение]; e: [части, номер ошибки, исправление, перевод, пояснение] */
+const S=[
+{t:"Часть 1 · Выбери слово",ic:"🧸",k:"c",q:[
+["입어요","추워서 패딩을 ___.",["신어요","써요","껴요"],"입다 — надевать одежду на верх."],
+["반바지","너무 더워서 ___를 입었어요.",["스웨터","코트","슬리퍼"],"반바지 — шорты."],
+["신어요","비가 와서 부츠를 ___.",["입어요","써요","해요"],"신다 — надевать на ступни."],
+["써요","햇빛이 강해서 선글라스를 ___.",["입어요","신어요","껴요"],"쓰다 — надевать на голову (и очки)."],
+["목도리","추워서 목에 ___를 했어요.",["반바지","슬리퍼","원피스"],"목도리 — тёплый шарф. Аксессуары: 하다."],
+["껴요","추워서 손에 장갑을 ___.",["입어요","신어요","써요"],"끼다 — надевать на пальцы."],
+["매요","면접에서 넥타이를 ___.",["입어요","신어요","써요"],"넥타이를 매다 — завязывать галстук."],
+["빼요","손이 부어서 반지를 ___.",["벗어요","풀어요","신어요"],"끼다 ↔ 빼다; 입다, 쓰다, 신다 ↔ 벗다."]]},
+{t:"Часть 2 · Подставь грамматику",ic:"🎀",k:"c",q:[
+["예쁜","저는 ___ 원피스를 샀어요.",["예쁘은","예쁜을","예뻐는"],"예쁘다 без патчима + ㄴ → 예쁜."],
+["짧은","여름에는 ___ 치마를 입어요.",["짧는","짧아","짧고은"],"짧다 с патчимом + 은 → 짧은."],
+["긴","저는 ___ 코트를 좋아해요.",["길은","길는","기는"],"ㄹ 탈락: 길다 → 길 + ㄴ → 긴."],
+["사세요","선생님은 어디에 ___?",["살세요","살으세요","사으세요"],"ㄹ 탈락: 살다 → перед ㅅ ㄹ выпадает: 사세요."],
+["한테","친구___ 옷을 선물했어요.",["에서","까지","으로"],"N한테 — кому (другу, ровеснику)."],
+["께","할머니___ 스카프를 드렸어요.",["에서","까지","으로"],"N께 — уважительная форма для старших."],
+["입어 보세요","마음에 들어요? 한번 ___.",["입으 보세요","입어 주세요","입려고 보세요"],"V-아/어 보세요 — попробуйте. 입다 → 입어 보세요."],
+["써 보세요","이 모자 한번 ___.",["쓰어 보세요","쓰 보세요","쓰으 보세요"],"ㅡ 탈락: 쓰다 → 써 보세요."]]},
+{t:"Часть 3 · Допиши предложение",ic:"💌",k:"t",q:[
+["저는","원피스를 좋아해요.","Я люблю красивые платья.","예쁘다 + A-(으)ㄴ N",["예쁜"],"예쁘다 → 예쁜."],
+["겨울에는","코트를 입어요.","Зимой ношу длинное пальто.","길다 + A-(으)ㄴ N",["긴"],"ㄹ 탈락: 길다 → 긴."],
+["이 가게에는","구두가 많아요.","В этом магазине много дорогих туфель.","비싸다 + A-(으)ㄴ N",["비싼"],"비싸다 → 비싼."],
+["친구","선물을 줬어요.","Я подарил(а) подарок другу.","N한테[께]: частица",["한테","에게"],"친구 — ровесник → 한테."],
+["선생님","물어봤어요.","Я спросил(а) у учителя (вежливо).","N한테[께]: уважительная форма",["께"],"선생님 — старший → 께."],
+["이 신발 한번","","Попробуйте эти туфли!","신다 + V-아/어 보세요",["신어 보세요"],"신다 → 신어 보세요."],
+["선생님은 어디에","","Где вы живёте? (вежливо)","살다 + -(으)세요",["사세요"],"ㄹ 탈락: 살다 → 사세요."]]},
+{t:"Часть 4 · Найди ошибку",ic:"🔍",k:"e",q:[
+[["저는","예쁘은","원피스를","샀어요."],1,"예쁜","Я купила красивое платье.","예쁘다 без патчима → ㄴ."],
+[["여름에는","짧는","치마를","입어요."],1,"짧은","Летом ношу короткие юбки.","Прилагательное с патчимом → 은."],
+[["길은","치마가","좋아요."],0,"긴","Мне нравятся длинные юбки.","ㄹ 탈락: 길다 → 긴."],
+[["어디에","살세요?"],1,"사세요","Где вы живёте?","ㄹ 탈락 перед ㅅ: 살다 → 사세요."],
+[["할머니한테","선물을","드렸어요."],0,"할머니께","Подарил(а) бабушке подарок.","Старшим — 께."],
+[["이 모자","한번","쓰어 보세요."],2,"써 보세요","Примерьте эту шляпу.","쓰다 → ㅡ 탈락: 써 보세요."]]}
+];
+const $=s=>document.querySelector(s);
+const total=S.reduce((a,x)=>a+x.q.length,0);
+const BG=["--c0","--c1","--c2","--c3"];
+let si,qi,done,sc,log,name;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const norm=s=>s.replace(/[\s.!?,~]/g,"");
+const app=$("#app");
+const setSec=i=>document.documentElement.style.setProperty("--sec","var("+BG[i%4]+")");
+function sticker(c,em,css){const s=el("span","sticker",em);s.style.cssText=css;c.append(s)}
+
+function start(){
+  si=0;qi=0;done=0;sc=S.map(()=>0);log=[];setSec(0);
+  app.innerHTML="";
+  const c=el("div","card");
+  c.append(el("p","sent","안녕하세요! 🍓"));
+  const i=el("input","inp");i.placeholder="Имя и фамилия";i.autocomplete="name";
+  try{i.value=localStorage.getItem("hw_name")||""}catch(e){}
+  const b=el("button","btn main","시작! · Начать");
+  b.onclick=()=>{name=i.value.trim();if(!name){i.focus();i.classList.add("shake");setTimeout(()=>i.classList.remove("shake"),400);return}
+    try{localStorage.setItem("hw_name",name)}catch(e){}
+    render()};
+  c.append(i,b);
+  sticker(c,"🧸","right:-8px;top:-28px;transform:rotate(12deg)");
+  sticker(c,"⭐","left:-10px;bottom:-18px;transform:rotate(-15deg)");
+  app.append(c);
+}
+
+function render(){
+  const sec=S[si],q=sec.q[qi];setSec(si);
+  app.innerHTML="";
+  const tr=el("div","track");const bi=el("i");const mk=el("b","","🎀");tr.append(bi,mk);app.append(tr);
+  const setP=()=>{const p=done/total*100;bi.style.width=p+"%";mk.style.left=p+"%"};
+  setP();
+  const c=el("div","card");
+  c.append(el("span","cnt",(qi+1)+" / "+sec.q.length));
+  c.append(el("span","tag",sec.ic+" "+sec.t));
+  const fb=el("div");
+  const rec=(ok,user,right,expl)=>{
+    done++;setP();
+    if(ok){sc[si]++;petals();c.classList.add("bounce");c.append(el("span","stamp","💮"))}else{c.classList.add("shake")}
+    log.push((si+1)+"."+(qi+1)+" "+(ok?"✓":"✗")+" "+user+(ok?"":" → "+right));
+    fb.className="fb "+(ok?"ok":"no");fb.innerHTML="";
+    fb.append(el("b","",ok?"정답! Верно!":"Правильно: "+right));
+    if(expl)fb.append(el("p","",expl));
+    const n=el("button","btn main",(si===S.length-1&&qi===sec.q.length-1)?"Результат 🎉":"다음 · Дальше");
+    n.onclick=next;fb.append(n);n.focus({preventScroll:true});
+  };
+  if(sec.k==="c"){
+    const [ans,s,wr,ex]=q;
+    const p=el("p","sent");p.innerHTML=s.replace(/___/g,'<span class="blank">&nbsp;&nbsp;?&nbsp;&nbsp;</span>');c.append(p);
+    const o=el("div","opts");
+    shuffle([ans,...wr]).forEach(w=>{const b=el("button","btn",w);
+      b.onclick=()=>{o.querySelectorAll("button").forEach(x=>{x.disabled=true;if(x.textContent===ans)x.classList.add("ok")});
+        if(w!==ans)b.classList.add("no");
+        rec(w===ans,w,ans,ex)};o.append(b)});
+    c.append(o);
+  }else if(sec.k==="t"){
+    const [pre,post,ru,hint,ans,ex]=q;
+    c.append(el("p","ru",ru),el("p","hint",hint));
+    c.append(el("p","sent",pre+" ＿＿＿ "+post));
+    const i=el("input","inp");i.placeholder="한국어로…";i.lang="ko";i.autocomplete="off";i.autocapitalize="off";i.spellcheck=false;
+    const b=el("button","btn main","확인 · Проверить");
+    const go=()=>{const v=norm(i.value);if(!v){i.focus();return}
+      i.disabled=true;b.remove();
+      const ok=ans.some(a=>norm(a)===v||norm(pre+a+post)===v);
+      i.classList.add(ok?"ok":"no");
+      rec(ok,i.value.trim(),ans[0],ex)};
+    b.onclick=go;i.onkeydown=e=>{if(e.key==="Enter")go()};
+    c.append(i,b);
+  }else{
+    const [parts,w,fix,ru,ex]=q;
+    c.append(el("p","ru",ru));
+    const ch=el("div","chips");
+    parts.forEach((t,idx)=>{const b=el("button","chip",t);
+      b.onclick=()=>{ch.querySelectorAll("button").forEach(x=>x.disabled=true);
+        ch.children[w].classList.add("ok");if(idx!==w)b.classList.add("no");
+        rec(idx===w,t,fix,"Исправление: "+parts[w]+" → "+fix+". "+ex)};
+      ch.append(b)});
+    c.append(ch);
+  }
+  c.append(fb);
+  sticker(c,["🧸","🎀","💌","🔍"][si],"right:-8px;bottom:-22px;transform:rotate(14deg)");
+  app.append(c);
+}
+
+function next(){qi++;if(qi>=S[si].q.length){si++;qi=0}
+  if(si>=S.length)result();else{render();window.scrollTo({top:0,behavior:"smooth"})}}
+
+function petals(){
+  const E=["🍓","⭐","🎀","🧸","💖","🍒"];
+  for(let k=0;k<16;k++){const p=el("span","petal",E[k%E.length]);
+    p.style.left=(Math.random()*100)+"vw";
+    p.style.setProperty("--dx",((Math.random()-.5)*180)+"px");
+    p.style.setProperty("--r",(Math.random()*360)+"deg");
+    p.style.animationDelay=(Math.random()*.4)+"s";
+    document.body.append(p);setTimeout(()=>p.remove(),2400)}
+}
+
+function result(){
+  const sum=sc.reduce((a,b)=>a+b,0),pct=Math.round(sum/total*100);
+  app.innerHTML="";setSec(2);
+  const tr=el("div","track");const bi=el("i");bi.style.width="100%";const mk=el("b","","🎀");mk.style.left="100%";tr.append(bi,mk);app.append(tr);
+  const c=el("div","card");
+  c.append(el("p","ru center","Результат: "+name));
+  c.append(el("div","big",pct+"%"));
+  c.append(el("p","center",sum+" из "+total+" — "+(pct>=90?"대단해요! Отлично! 🏆":pct>=70?"잘했어요! Хорошая работа! 🌟":pct>=50?"좋아요! Неплохо, повтори слабые места.":"화이팅! Повтори тему и попробуй снова. 💪")));
+  S.forEach((s,i)=>{const r=el("div","row");r.append(el("span","",s.ic+" "+s.t.split(" · ")[0]),el("b","",sc[i]+" / "+s.q.length));c.append(r)});
+  const date=new Date().toLocaleString("ru-RU");
+  const text="패션 — домашнее задание\nУченик: "+name+"\nДата: "+date+"\nИтого: "+sum+"/"+total+" ("+pct+"%)\n"+S.map((s,i)=>s.t.split(" · ")[0]+": "+sc[i]+"/"+s.q.length).join("; ")+"\n\nОтветы (✗ — ответ ученика → верный):\n"+log.join("\n");
+  const a=el("a","btn main","📧 Отправить учителю");
+  a.href="mailto:"+TO+"?subject="+encodeURIComponent("패션 ДЗ: "+name+" — "+sum+"/"+total)+"&body="+encodeURIComponent(text);
+  a.target="_blank";a.rel="noopener";
+  const ta=el("textarea");ta.value=text;ta.readOnly=true;
+  const cp=el("button","btn ghost","Скопировать результат");
+  cp.onclick=async()=>{try{await navigator.clipboard.writeText(text)}catch(e){ta.select();try{document.execCommand("copy")}catch(_){}}
+    cp.textContent="Скопировано ✓"};
+  const rs=el("button","btn ghost","다시 · Пройти заново");rs.onclick=start;
+  c.append(a,cp,el("p","ru","Если почта не открылась, скопируй результат и отправь на "+TO),ta,rs);
+  sticker(c,"🏆","right:-8px;top:-26px;transform:rotate(12deg)");
+  app.append(c);
+  petals();window.scrollTo({top:0});
+}
+start();
+</script>
+</body>
+</html>
