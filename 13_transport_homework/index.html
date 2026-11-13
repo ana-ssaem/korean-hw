@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>교통 · Домашнее задание</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6fa;--card:#fff;--ink:#3b3560;--mut:#7d77a0;--c0:#ffd1e0;--c1:#c8f1de;--c2:#fff0a8;--c3:#dccbfa;--sky:#cfe6ff;--okbg:#b6ecce;--nobg:#ffc3cb;--sec:var(--c0);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#231f38;--card:#302b4d;--ink:#f6f2ff;--mut:#b4aed6;--c0:#6b3a56;--c1:#2f6350;--c2:#6b5e2a;--c3:#4f3f86;--sky:#34527a;--okbg:#2f7a58;--nobg:#8a3a48;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#231f38;--card:#302b4d;--ink:#f6f2ff;--mut:#b4aed6;--c0:#6b3a56;--c1:#2f6350;--c2:#6b5e2a;--c3:#4f3f86;--sky:#34527a;--okbg:#2f7a58;--nobg:#8a3a48;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Jua","Gamja Flower","Noto Sans KR",system-ui,sans-serif;font-size:19px;line-height:1.45;min-height:100vh;
+background-image:radial-gradient(var(--c3) 2px,transparent 2px);background-size:26px 26px;background-attachment:fixed}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 48px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.logo{background:var(--sky);border:3px solid var(--ink);border-radius:18px;box-shadow:4px 4px 0 var(--ink);padding:4px 14px;font-size:30px;transform:rotate(-3deg);flex:none}
+.top small{display:block;color:var(--mut);font-size:15px}
+.top .st{font-size:26px;letter-spacing:4px}
+.track{position:relative;height:16px;background:var(--card);border:3px solid var(--ink);border-radius:12px;margin:26px 4px 20px}
+.track i{display:block;height:100%;width:0;background:var(--sec);border-radius:8px;transition:width .6s cubic-bezier(.3,1.4,.5,1)}
+.track b{position:absolute;top:-26px;left:0;font-size:26px;transition:left .6s cubic-bezier(.3,1.4,.5,1);transform:translateX(-50%) scaleX(-1)}
+.card{position:relative;background:var(--card);border:3px solid var(--ink);border-radius:26px;box-shadow:7px 7px 0 var(--ink);padding:24px 18px 20px}
+.tag{display:inline-block;background:var(--sec);border:3px solid var(--ink);border-radius:999px;padding:2px 14px;font-size:16px;margin:-40px 0 12px;transform:rotate(-2deg)}
+.cnt{position:absolute;right:16px;top:-16px;background:var(--card);border:3px solid var(--ink);border-radius:999px;padding:0 12px;font-size:16px}
+.sub{color:var(--mut);font-size:16px;margin:0 0 14px}
+.ru{color:var(--mut);font-size:16px;margin:0 0 6px}
+.sent{font-size:28px;line-height:1.5;margin:0 0 20px;word-break:keep-all}
+.blank{display:inline-block;min-width:54px;border-bottom:4px dotted var(--ink);text-align:center;margin:0 2px}
+.opts{display:grid;gap:12px}
+.btn{font:inherit;font-size:22px;min-height:60px;width:100%;padding:10px 16px;border-radius:18px;border:3px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.btn:focus-visible,.inp:focus-visible,.chip:focus-visible{outline:4px solid var(--sky);outline-offset:2px}
+.btn.main{background:var(--sec);margin-top:16px}
+.btn.ghost{background:var(--sky);margin-top:14px;font-size:19px;min-height:54px}
+.btn.ok,.chip.ok,.inp.ok{background:var(--okbg)}
+.btn.no,.chip.no,.inp.no{background:var(--nobg)}
+.btn:disabled,.chip:disabled{cursor:default;transform:none}
+.inp{width:100%;min-height:60px;font:inherit;font-size:24px;padding:8px 14px;border-radius:18px;border:3px solid var(--ink);background:var(--card);color:var(--ink)}
+.hint{display:inline-block;font-size:15px;background:var(--c2);border:2px solid var(--ink);border-radius:10px;padding:1px 10px;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{font:inherit;font-size:24px;min-height:58px;padding:6px 18px;border-radius:18px;border:3px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 5px 0 var(--ink)}
+.fb{margin-top:18px;padding:14px 16px;border-radius:18px;border:3px dashed var(--ink);animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+.fb.ok{background:var(--okbg)}.fb.no{background:var(--nobg)}
+.fb b{font-size:21px;font-weight:400}
+.fb p{margin:6px 0 0;font-size:16px}
+.stamp{position:absolute;right:10px;top:-26px;font-size:44px;animation:stamp .7s cubic-bezier(.3,1.8,.5,1) forwards;pointer-events:none}
+.sticker{position:absolute;font-size:36px;opacity:.95;pointer-events:none}
+.shake{animation:shake .4s}
+.bounce{animation:bounce .6s}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+@keyframes bounce{30%{transform:scale(1.03) rotate(-1deg)}60%{transform:scale(.99) rotate(1deg)}}
+@keyframes stamp{0%{transform:scale(3) rotate(-30deg);opacity:0}100%{transform:scale(1) rotate(-12deg);opacity:1}}
+.petal{position:fixed;top:-40px;font-size:28px;pointer-events:none;z-index:9;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translate(var(--dx),108vh) rotate(var(--r));opacity:.3}}
+.big{font-size:84px;line-height:1;text-align:center;margin:8px 0}
+.center{text-align:center}
+.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:2px dotted var(--ink);font-size:18px}
+textarea{width:100%;height:120px;margin-top:12px;border:3px solid var(--ink);border-radius:14px;background:var(--card);color:var(--ink);font:13px/1.4 ui-monospace,monospace;padding:10px}
+a.btn{display:block;text-align:center;text-decoration:none;line-height:36px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="logo">교통</div><div><span class="st">🚌🚇🚕</span><small>Транспорт · Домашнее задание</small></div></div>
+  <div id="app"></div>
+</div>
+<script>
+const TO="akosenko62@gmail.com";
+/* c: [верный, предложение, перевод, неверные[], пояснение] */
+const S=[
+{t:"Часть 1 · Выбери слово",ic:"🎫",sub:"Выбери слово, которое подходит по смыслу.",k:"c",q:[
+["정류장","버스 ___에서 친구를 기다려요.","Жду друга на автобусной остановке.",["공항","신호등","표"],"정류장 — остановка."],
+["내려요","저는 다음 정류장에서 ___.","Я выхожу на следующей остановке.",["운전해요","막혀요","걸려요"],"내리다 — выходить (из транспорта)."],
+["갈아타요","서울역에서 2호선으로 ___.","На станции Сеул пересаживаюсь на линию 2.",["운전해요","막혀요","도착해요"],"갈아타다 — пересаживаться."],
+["비행기","하늘을 날아요. 그래서 ___를 타요.","Он летает по небу, и я сажусь на …",["지하철","자전거","기차"],"비행기 — самолёт."],
+["막혀요","퇴근 시간에는 길이 ___.","В час пик на дорогах пробки.",["갈아타요","내려요","출발해요"],"길이 막히다 — пробка."],
+["신호등","빨간 ___ 앞에서 멈춰요.","Останавливаюсь перед красным светофором.",["표","공항","역"],"신호등 — светофор."],
+["교통카드","버스를 탈 때 ___를 찍어요.","В автобусе прикладываю транспортную карту.",["신호등","횡단보도","자전거"],"교통카드 — транспортная карта."],
+["도착해요","기차가 10시에 서울에 ___.","Поезд прибывает в Сеул в 10 часов.",["운전해요","갈아타요","내려요"],"도착하다 — прибывать."]]},
+{t:"Часть 2 · Подставь грамматику",ic:"🚦",sub:"Выбери правильную форму или грамматику для ситуации.",k:"c",q:[
+["타려고 해요","내일은 지하철을 ___.","Завтра собираюсь ехать на метро.",["타으려고 해요","타 주세요","타까지 해요"],"V-(으)려고 하다 — намерение. 타 без патчима → 려고."],
+["앉으려고 해요","버스에서 자리에 ___.","Собираюсь сесть на место в автобусе.",["앉려고 해요","앉아 주세요","앉에서 해요"],"앉다 с патчимом → 으려고."],
+["에서 / 까지","집___ 학교___ 버스로 30분 걸려요.","От дома до школы на автобусе 30 минут.",["까지 / 에서","에 / 에서","로 / 까지"],"N에서 N까지 — от … до …"],
+["지하철로","저는 공항에 ___ 가요.","Я еду в аэропорт на метро.",["지하철으로","지하철을로","지하철에서"],"지하철 заканчивается на ㄹ → 로, а не 으로."],
+["오른쪽으로","여기에서 ___ 가세요.","Отсюда идите направо.",["오른쪽로","오른쪽에서","오른쪽까지"],"오른쪽 с патчимом ㄱ → 으로 (направление)."],
+["세워 주세요","기사님, 여기에서 ___.","Водитель, остановите здесь, пожалуйста.",["세우려고 해요","세우 주세요","세워까지"],"V-아/어 주다 — просьба. 세우다 → 세워 주세요."],
+["가 주세요","택시에서: 공항까지 ___.","В такси: отвезите меня до аэропорта.",["가려고 해요","가어 주세요","가로 주세요"],"가 + 아 → 가: 가 주세요."],
+["알려 줘요","친구한테 길을 ___.","Объясняю другу дорогу.",["알려로","알려까지","알려에서"],"V-아/어 주다 — делаю для кого-то: 알려 줘요."]]},
+{t:"Часть 3 · Допиши предложение",ic:"✏️",sub:"Впиши недостающую часть по-корейски.",k:"t",q:[
+["내일 기차를","","Завтра собираюсь ехать на поезде.","타다 + V-(으)려고 하다",["타려고 해요","타려고 합니다"],"타다 → 타려고 해요."],
+["다음 역에서","","Собираюсь выйти на следующей станции.","내리다 + V-(으)려고 하다",["내리려고 해요","내리려고 합니다"],"내리다 → 내리려고 해요."],
+["서울역","부산역까지 기차로 세 시간 걸려요.","От вокзала Сеул до Пусана на поезде три часа.","N에서 N까지: частица «от»",["에서"],"서울역에서 부산역까지."],
+["오른쪽","가세요.","Идите направо.","N(으)로: направление",["으로"],"오른쪽 — патчим ㄱ → 으로."],
+["기사님, 문을","","Водитель, откройте дверь, пожалуйста.","열다 + V-아/어 주다",["열어 주세요"],"열다 → 열어 주세요."],
+["저는 매일 지하철","가요.","Я каждый день езжу на метро.","N(으)로: средство передвижения",["로"],"지하철 — патчим ㄹ → 로."],
+["길을 몰라요. 길을","","Я не знаю дорогу. Подскажите, пожалуйста.","알려 주다 + -(으)세요",["알려 주세요"],"알려 주세요."]]},
+{t:"Часть 4 · Найди ошибку",ic:"🔍",sub:"Нажми на слово, в котором ошибка.",k:"e",q:[
+[["내일","버스를","타으려고 해요."],2,"타려고 해요","Завтра собираюсь ехать на автобусе.","타 без патчима → 려고."],
+[["집에","학교까지","버스로","30분 걸려요."],0,"집에서","Из дома до школы на автобусе 30 минут.","«От» — 에서: 집에서 학교까지."],
+[["지하철으로","가요."],0,"지하철로","Еду на метро.","Основа на ㄹ → 로."],
+[["기사님,","공항까지","가어 주세요."],2,"가 주세요","Водитель, отвезите до аэропорта.","가 + 아 → 가: 가 주세요."],
+[["문이 무거워요.","문을","열려고 해요."],2,"열어 주세요","Дверь тяжёлая. Откройте, пожалуйста.","Просьба → V-아/어 주세요, а не 려고 해요."],
+[["오른쪽로","가세요."],0,"오른쪽으로","Идите направо.","Патчим ㄱ → 으로."]]}
+];
+const $=s=>document.querySelector(s);
+const total=S.reduce((a,x)=>a+x.q.length,0);
+const BG=["--c0","--c1","--c2","--c3"];
+let si,qi,done,sc,log,name;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const norm=s=>s.replace(/[\s.!?,~]/g,"");
+const app=$("#app");
+const setSec=i=>document.documentElement.style.setProperty("--sec","var("+BG[i%4]+")");
+function sticker(c,em,css){const s=el("span","sticker",em);s.style.cssText=css;c.append(s)}
+
+function start(){
+  si=0;qi=0;done=0;sc=S.map(()=>0);log=[];setSec(0);
+  app.innerHTML="";
+  const c=el("div","card");
+  c.append(el("p","sent","안녕하세요! 🚌"));
+  const i=el("input","inp");i.placeholder="Имя и фамилия";i.autocomplete="name";
+  try{i.value=localStorage.getItem("hw_name")||""}catch(e){}
+  const b=el("button","btn main","출발! · Поехали");
+  b.onclick=()=>{name=i.value.trim();if(!name){i.focus();i.classList.add("shake");setTimeout(()=>i.classList.remove("shake"),400);return}
+    try{localStorage.setItem("hw_name",name)}catch(e){}
+    render()};
+  c.append(i,b);
+  sticker(c,"🚕","right:-8px;top:-24px;transform:rotate(12deg)");
+  sticker(c,"⭐","left:-10px;bottom:-18px;transform:rotate(-15deg)");
+  app.append(c);
+}
+
+function render(){
+  const sec=S[si],q=sec.q[qi];setSec(si);
+  app.innerHTML="";
+  const tr=el("div","track");const bi=el("i");const bus=el("b","","🚌");tr.append(bi,bus);app.append(tr);
+  const setP=()=>{const p=done/total*100;bi.style.width=p+"%";bus.style.left=p+"%"};
+  setP();
+  const c=el("div","card");
+  c.append(el("span","cnt",(qi+1)+" / "+sec.q.length));
+  c.append(el("span","tag",sec.ic+" "+sec.t));
+  const fb=el("div");
+  const rec=(ok,user,right,expl)=>{
+    done++;setP();
+    if(ok){sc[si]++;petals();c.classList.add("bounce");c.append(el("span","stamp","💮"))}else{c.classList.add("shake")}
+    log.push((si+1)+"."+(qi+1)+" "+(ok?"✓":"✗")+" "+user+(ok?"":" → "+right));
+    fb.className="fb "+(ok?"ok":"no");fb.innerHTML="";
+    fb.append(el("b","",ok?"정답! Верно!":"Правильно: "+right));
+    if(expl)fb.append(el("p","",expl));
+    const n=el("button","btn main",(si===S.length-1&&qi===sec.q.length-1)?"Результат 🎉":"다음 · Дальше");
+    n.onclick=next;fb.append(n);n.focus({preventScroll:true});
+  };
+  if(sec.k==="c"){
+    const [ans,s,ru,wr,ex]=q;
+    const p=el("p","sent");p.innerHTML=s.replace(/___/g,'<span class="blank">&nbsp;&nbsp;?&nbsp;&nbsp;</span>');c.append(p);
+    const o=el("div","opts");
+    shuffle([ans,...wr]).forEach(w=>{const b=el("button","btn",w);
+      b.onclick=()=>{o.querySelectorAll("button").forEach(x=>{x.disabled=true;if(x.textContent===ans)x.classList.add("ok")});
+        if(w!==ans)b.classList.add("no");
+        rec(w===ans,w,ans,ex)};o.append(b)});
+    c.append(o);
+  }else if(sec.k==="t"){
+    const [pre,post,ru,hint,ans,ex]=q;
+    c.append(el("p","ru",ru),el("p","hint",hint));
+    c.append(el("p","sent",pre+" ＿＿＿ "+post));
+    const i=el("input","inp");i.placeholder="한국어로…";i.lang="ko";i.autocomplete="off";i.autocapitalize="off";i.spellcheck=false;
+    const b=el("button","btn main","확인 · Проверить");
+    const go=()=>{const v=norm(i.value);if(!v){i.focus();return}
+      i.disabled=true;b.remove();
+      const ok=ans.some(a=>norm(a)===v||norm(pre+a+post)===v);
+      i.classList.add(ok?"ok":"no");
+      rec(ok,i.value.trim(),ans[0],ex)};
+    b.onclick=go;i.onkeydown=e=>{if(e.key==="Enter")go()};
+    c.append(i,b);
+  }else{
+    const [parts,w,fix,ru,ex]=q;
+    c.append(el("p","ru",ru));
+    const ch=el("div","chips");
+    parts.forEach((t,idx)=>{const b=el("button","chip",t);
+      b.onclick=()=>{ch.querySelectorAll("button").forEach(x=>x.disabled=true);
+        ch.children[w].classList.add("ok");if(idx!==w)b.classList.add("no");
+        rec(idx===w,t,fix,"Исправление: "+parts[w]+" → "+fix+". "+ex)};
+      ch.append(b)});
+    c.append(ch);
+  }
+  c.append(fb);
+  sticker(c,["🎫","🚦","✏️","🔍"][si],"right:-8px;bottom:-22px;transform:rotate(14deg)");
+  app.append(c);
+}
+
+function next(){qi++;if(qi>=S[si].q.length){si++;qi=0}
+  if(si>=S.length)result();else{render();window.scrollTo({top:0,behavior:"smooth"})}}
+
+function petals(){
+  const E=["🌸","⭐","🚌","🎫","💖","🚲"];
+  for(let k=0;k<16;k++){const p=el("span","petal",E[k%E.length]);
+    p.style.left=(Math.random()*100)+"vw";
+    p.style.setProperty("--dx",((Math.random()-.5)*180)+"px");
+    p.style.setProperty("--r",(Math.random()*360)+"deg");
+    p.style.animationDelay=(Math.random()*.4)+"s";
+    document.body.append(p);setTimeout(()=>p.remove(),2400)}
+}
+
+function result(){
+  const sum=sc.reduce((a,b)=>a+b,0),pct=Math.round(sum/total*100);
+  app.innerHTML="";setSec(2);
+  const tr=el("div","track");const bi=el("i");bi.style.width="100%";const bus=el("b","","🚌");bus.style.left="100%";tr.append(bi,bus);app.append(tr);
+  const c=el("div","card");
+  c.append(el("p","ru center","Результат: "+name));
+  c.append(el("div","big",pct+"%"));
+  c.append(el("p","center",sum+" из "+total+" — "+(pct>=90?"대단해요! Отлично! 🏆":pct>=70?"잘했어요! Хорошая работа! 🌟":pct>=50?"좋아요! Неплохо, повтори слабые места.":"화이팅! Повтори тему и попробуй снова. 💪")));
+  S.forEach((s,i)=>{const r=el("div","row");r.append(el("span","",s.ic+" "+s.t.split(" · ")[0]),el("b","",sc[i]+" / "+s.q.length));c.append(r)});
+  const date=new Date().toLocaleString("ru-RU");
+  const text="교통 — домашнее задание\nУченик: "+name+"\nДата: "+date+"\nИтого: "+sum+"/"+total+" ("+pct+"%)\n"+S.map((s,i)=>s.t.split(" · ")[0]+": "+sc[i]+"/"+s.q.length).join("; ")+"\n\nОтветы (✗ — ответ ученика → верный):\n"+log.join("\n");
+  const a=el("a","btn main","📧 Отправить учителю");
+  a.href="mailto:"+TO+"?subject="+encodeURIComponent("교통 ДЗ: "+name+" — "+sum+"/"+total)+"&body="+encodeURIComponent(text);
+  a.target="_blank";a.rel="noopener";
+  const ta=el("textarea");ta.value=text;ta.readOnly=true;
+  const cp=el("button","btn ghost","Скопировать результат");
+  cp.onclick=async()=>{try{await navigator.clipboard.writeText(text)}catch(e){ta.select();try{document.execCommand("copy")}catch(_){}}
+    cp.textContent="Скопировано ✓"};
+  const rs=el("button","btn ghost","다시 · Пройти заново");rs.onclick=start;
+  c.append(a,cp,el("p","ru","Если почта не открылась, скопируй результат и отправь на "+TO),ta,rs);
+  sticker(c,"🏆","right:-8px;top:-26px;transform:rotate(12deg)");
+  app.append(c);
+  petals();window.scrollTo({top:0});
+}
+start();
+</script>
+</body>
+</html>
