@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>숙제 · Домашние задания</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#dfe9f5;--grid:rgba(60,100,170,.13);--card:#fff;--ink:#1d2333;--mut:#5d6a85;--pen:#1b3fa0;--line:#cfd8e8;--yel:#ffc233;--band:#e63946;--bandink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a2a;--grid:rgba(120,150,220,.1);--card:#222b40;--ink:#f1f4fb;--mut:#a3afc9;--pen:#9db7ff;--line:#38435e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141a2a;--grid:rgba(120,150,220,.1);--card:#222b40;--ink:#f1f4fb;--mut:#a3afc9;--pen:#9db7ff;--line:#38435e;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;background-attachment:fixed;color:var(--ink);font-family:"Gaegu","Noto Sans KR",system-ui,sans-serif;font-weight:700;font-size:21px;line-height:1.4;min-height:100vh}
+.wrap{max-width:560px;margin:0 auto;padding:44px 16px 44px}
+.tagcard{position:relative;background:var(--card);border:3px solid var(--ink);border-radius:20px;box-shadow:0 9px 0 rgba(0,0,0,.2)}
+.slot{position:absolute;top:-15px;left:50%;width:70px;height:18px;transform:translateX(-50%);background:var(--bg);border:3px solid var(--ink);border-radius:10px;z-index:2}
+.hdr{background:var(--band);color:var(--bandink);border-radius:16px 16px 0 0;text-align:center;padding:18px 10px 10px}
+.hello{display:block;font:400 38px/1 "Permanent Marker",cursive;letter-spacing:3px}
+.mni{display:block;font-size:17px;letter-spacing:2px;opacity:.95}
+.body{padding:20px 18px 24px}
+.sec{color:var(--mut);font-size:18px;margin-bottom:12px}
+.list{display:grid;gap:14px}
+.lesson{display:flex;align-items:center;gap:14px;min-height:72px;padding:10px 16px;border-radius:14px;border:3px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;box-shadow:0 5px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.lesson:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.lesson:focus-visible{outline:4px solid var(--yel);outline-offset:2px}
+.ic{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:12px;border:3px solid var(--ink);background:var(--yel);font-size:28px}
+.txt{flex:1;min-width:0}
+.ko{display:block;font:700 22px "Noto Sans KR",sans-serif;color:var(--pen);line-height:1.25}
+.ru{display:block;color:var(--mut);font-size:19px}
+.no{flex:none;font:400 26px "Permanent Marker",cursive;color:var(--band)}
+.sticker{position:absolute;right:-8px;bottom:-24px;font-size:38px;transform:rotate(14deg);pointer-events:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tagcard">
+    <div class="slot"></div>
+    <div class="hdr">
+      <span class="hello">HELLO</span>
+      <span class="mni">숙제 · Домашние задания</span>
+    </div>
+    <div class="body">
+      <div class="sec">✏️ Выбери урок</div>
+      <nav class="list">
+        <a class="lesson" href="1_greetings_homework/">
+          <span class="ic">👋</span>
+          <span class="txt"><span class="ko">인사</span><span class="ru">Приветствия</span></span>
+          <span class="no">1</span>
+        </a>
+        <a class="lesson" href="13_transport_homework/">
+          <span class="ic">🚌</span>
+          <span class="txt"><span class="ko">교통</span><span class="ru">Транспорт</span></span>
+          <span class="no">13</span>
+        </a>
+        <a class="lesson" href="14_fashion_homework_v2/">
+          <span class="ic">👗</span>
+          <span class="txt"><span class="ko">패션</span><span class="ru">Мода</span></span>
+          <span class="no">14</span>
+        </a>
+        <a class="lesson" href="15_travel_homework/">
+          <span class="ic">✈️</span>
+          <span class="txt"><span class="ko">여행</span><span class="ru">Путешествия</span></span>
+          <span class="no">15</span>
+        </a>
+      </nav>
+    </div>
+    <span class="sticker">🌍</span>
+  </div>
+</div>
+</body>
+</html>
